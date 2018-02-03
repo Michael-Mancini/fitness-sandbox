@@ -1,0 +1,28 @@
+<section class="signup-form">
+  <form
+    [formGroup]="loginForm"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Enter email"
+        formControlName="email">
+      <mat-hint>Please enter a valid email</mat-hint>
+      <mat-error>Invalid or missing email</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="Please enter your password">
+      <input
+        type="password"
+        matInput
+        placeholder="Enter password"
+        formControlName="password">
+      <mat-error>Minimum length is 6 characters</mat-error>
+    </mat-form-field>
+    <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Log In</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</section>
